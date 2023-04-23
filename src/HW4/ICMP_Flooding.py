@@ -9,7 +9,7 @@ class icmp_flood(Thread):
         self.running = True
         self.intercount = 0
         
-        #ascii의 모든 문자와 숫자를 가져온 뒤 합친 문자열*600
+        #ascii의 모든 문자와 숫자를 가져온 뒤 합친 문자열
         self.data = (string.ascii_letters + string.digits)
         self.res = str(self.data.encode('utf8'))
         
