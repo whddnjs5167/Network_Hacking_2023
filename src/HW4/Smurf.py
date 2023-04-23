@@ -10,7 +10,7 @@ def smurf():
 threads = []
 
 while(1):
-    for i in range(250):
+    for i in range(1):
         th = Thread(target = smurf)
         th.start()
         threads.append(th)
